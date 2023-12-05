@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 function Register(props) {
-    return <View style={{ backgroundColor: 'red', flex: 100 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, flex: 20 }}>
+    return <KeyboardAwareScrollView style={{ backgroundColor: '#de4345', flex: 100 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, flex: 25 }}>
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>{`Here's \nyour first \nstep width \nus!`}</Text>
-            <Image tintColor={'red'} style={{ width: 130, height: 120, backgroundColor: 'white' }} source={require('../assets/laptop.png')}></Image>
+            <Image tintColor={'white'} style={{ width: 130, height: 120}} source={require('../assets/laptop.png')}></Image>
         </View>
         <View style={{ marginHorizontal: 10, backgroundColor: 'white', borderRadius: 10, paddingHorizontal: 25, paddingTop: 10, flex: 60 }}>
             <Text style={{ color: 'red' }}>Name:</Text>
@@ -28,17 +29,17 @@ function Register(props) {
                 <Text style={{ color: 'white', paddingTop: 5, paddingBottom: 5 }}>Register</Text>
             </TouchableOpacity>
         </View>
-        <View style={{ marginTop: 35, flex: 20 }}>
+        <View style={{ marginTop: 45, flex: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 30 }}>
                 <View style={{ height: 1, backgroundColor: 'white', flex: 1, marginHorizontal: 10 }}></View>
                 <Text style={{ color: 'white' }}>Use order Methods</Text>
                 <View style={{ height: 1, backgroundColor: 'white', flex: 1, marginHorizontal: 10 }}></View>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 10 }}>
-                <Icon style={{ marginHorizontal: 5 }} name="facebook" size={30} color={'blue'} backgroundColor={'white'}></Icon>
-                <Icon style={{ marginHorizontal: 5 }} name="google" size={30} color={'red'} backgroundColor={'white'}></Icon>
+                <Icon style={{ marginHorizontal: 5 }} name="facebook" size={30} color={'blue'}></Icon>
+                <Icon style={{ marginHorizontal: 5 }} name="google" size={30} color={'red'}></Icon>
             </View>
         </View>
-    </View>
+    </KeyboardAwareScrollView>
 }
 export default Register;

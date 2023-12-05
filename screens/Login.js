@@ -10,6 +10,8 @@ function Login(props) {
     // states store email/password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // Check validate ==true
+    const isValidOke = () => email.length > 0 && password.length > 0 && isValidEmail(email) == true && isValidPass(password) == true
     useEffect(() => {
         // ComponentDivMount khi dữ liệu load thì chui vào đây
         Keyboard.addListener('keyboardDidShow', () => {
@@ -26,19 +28,20 @@ function Login(props) {
         </View>
         <View style={{ marginHorizontal: 10, flex: 30 }}>
             <Text style={{ color: 'red' }}>Email:</Text>
-            <TextInput onChangeText={(text) => { setErrorEmail(isValidEmail(text) == true ? '' : 'Email not in correct format') }} placeholder='abc@gmail.com' placeholderTextColor={'grey'}></TextInput>
+            <TextInput onChangeText={(text) => { setErrorEmail(isValidEmail(text) == true ? '' : 'Email not in correct format'); setEmail(text) }} placeholder='abc@gmail.com' placeholderTextColor={'grey'}></TextInput>
             <View style={{ backgroundColor: 'red', height: 1, width: '100%', marginBottom: 10 }}></View>
             <Text style={{ color: 'red' }}>{errorEmail}</Text>
 
             <Text style={{ color: 'red' }}>Password:</Text>
-            <TextInput onChangeText={(text) => { setErrorPassword(isValidPass(text) == true ? '' : 'Password required on 3 characters') }} placeholder='Enter your password' secureTextEntry={true} placeholderTextColor={'grey'}></TextInput>
+            <TextInput onChangeText={(text) => { setErrorPassword(isValidPass(text) == true ? '' : 'Password required on 3 characters'); setPassword(text) }} placeholder='Enter your password' secureTextEntry={true} placeholderTextColor={'grey'}></TextInput>
             <View style={{ backgroundColor: 'red', height: 1, width: '100%' }}></View>
             <Text style={{ color: 'red' }}>{errorPassword}</Text>
         </View>
         {keyboardIsDown == false && <View style={{ flex: 20 }}>
-            <TouchableOpacity onPress={() => { alert('Login success') }} style={{ backgroundColor: 'red', borderColor: 'red', borderWidth: 1, borderRadius: 20, marginHorizontal: 100, alignItems: 'center', marginTop: 50 }}>
+            <TouchableOpacity disabled={isValidOke() == false} onPress={() => { alert('Login success') }} style={{ backgroundColor: isValidOke() == true ? 'red' : 'grey', borderWidth: 1, borderRadius: 20, marginHorizontal: 100, alignItems: 'center', marginTop: 50 }}>
                 <Text style={{ padding: 7, color: 'white' }}>Login</Text>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => { alert('Press register') }}>
                 <Text style={{ textAlign: 'center', color: 'red', marginTop: 10 }}>New user ? Register now</Text>
             </TouchableOpacity>
