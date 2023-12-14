@@ -21,6 +21,10 @@ function MainScreen(props) {
             isSelected: false
         }
     ]);
+    // navigation
+    const {navigation , route} = props;
+    // function of navigate to/back
+    const {navigate, goBack} = navigation;
     return <View style={{ backgroundColor: 'white', flex: 100 }}>
         <ImageBackground style={{ flex: 100 }} source={require('../assets/background.jpg')}>
             <View style={{ flexDirection: 'row', flex: 15, alignItems: 'center', height: 50 }}>
@@ -53,7 +57,9 @@ function MainScreen(props) {
             </View>
 
             <View style={{ flex: 15 }} >
-                <UIButton title='LOGIN'></UIButton>
+                <UIButton onPress={()=>{
+                    navigate('Login')
+                }} title='LOGIN'></UIButton>
                 <Text style={{ textAlign: 'center', color: 'white' }}>Don't know what account ty to use?</Text>
                 <Text style={{ textAlign: 'center', color: 'white' }}>@copyright</Text>
             </View>

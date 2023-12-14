@@ -20,7 +20,11 @@ function Login(props) {
         Keyboard.addListener('keyboardDidHide', () => {
             setkeyboardIsDown(false)
         });
-    })
+    });
+        // navigation
+        const {navigation , route} = props;
+        // function of navigate to/back
+        const {navigate, goBack} = navigation;
     return <View style={{ backgroundColor: 'white', flex: 100, paddingTop: 50 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, alignItems: 'center', flex: 30 }}>
             <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{`Already have an \nAccount?`}</Text>
@@ -38,7 +42,7 @@ function Login(props) {
             <Text style={{ color: 'red' }}>{errorPassword}</Text>
         </View>
         {keyboardIsDown == false && <View style={{ flex: 20 }}>
-            <TouchableOpacity disabled={isValidOke() == false} onPress={() => { alert('Login success') }} style={{ backgroundColor: isValidOke() == true ? 'red' : 'grey', borderWidth: 1, borderRadius: 20, marginHorizontal: 100, alignItems: 'center', marginTop: 50 }}>
+            <TouchableOpacity disabled={isValidOke() == false} onPress={() => { navigate('UITab') }} style={{ backgroundColor: isValidOke() == true ? 'red' : 'grey', borderWidth: 1, borderRadius: 20, marginHorizontal: 100, alignItems: 'center', marginTop: 50 }}>
                 <Text style={{ padding: 7, color: 'white' }}>Login</Text>
             </TouchableOpacity>
 
