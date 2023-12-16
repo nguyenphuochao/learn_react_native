@@ -7,7 +7,7 @@ yarn add @react-navigation/native-stack
 yarn add react-native-screens
 */
 import * as React from 'react';
-import { Settings, ProductGridView, FoodList } from '../screens'
+import { Settings, ProductGridView, FoodList, Profile } from '../screens'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
@@ -23,6 +23,8 @@ const screenOptions = ({ route }) => ({
             iconName = "list";
         }else if(screenName == "Settings"){
             iconName = "gear";
+        }else if(screenName == "Profile"){
+            iconName = "user";
         }
         return <Icon name={iconName} size={20} color={focused ? 'pink' : 'grey'}>
         </Icon>
@@ -30,9 +32,10 @@ const screenOptions = ({ route }) => ({
 });
 function UITab(props) {
     return <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name={"ProductGridView"} component={ProductGridView} />
-        <Tab.Screen name={"FoodList"} component={FoodList} />
+        <Tab.Screen name={"ProductGridView"} component={ProductGridView} options={{tabBarLabel : 'Products'}} />
+        <Tab.Screen name={"FoodList"} component={FoodList} options={{tabBarLabel : 'Foods'}}/>
         <Tab.Screen name={"Settings"} component={Settings} />
+        <Tab.Screen name={"Profile"} component={Profile} options={{tabBarLabel : 'Profile'}} />
     </Tab.Navigator>
 }
 export default UITab;
