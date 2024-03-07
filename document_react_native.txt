@@ -1,0 +1,27 @@
+- Tạo project:  npx react-native init "project name"
+- start project: yarn android / npx react-native start
+- Định dạng lại các thẻ sử dụng : style={{}}
+- thẻ để hiển thị: View
+- thẻ nội dung : Text
+- nút nhấn : TouchableOpacity, chỉ có này mới thực hiện onPress được
+- nhập text : TextInput
+- nằm trên 1 hàng giống flexbox: flexDirection: 'row'
+- nằm đầu/nằm cuối trục ngang: justiflyContent : 'flex-start' / 'flex-end'
+- nằm ở giữa trục dọc : alignItems: 'center'
+- màu nền: backgroundColor: 'red'
+- màu của hình png: tintColor: 'white'
+- chiếm hết phần của 1 hàng : flex : 1
+- <ImageBackground source={require('../')}/> phải đi chung vs style={{flex:1}}
+- <Image source={{uri:'http://vn'}}> sử dụng link ảnh
+- sử dụng flex : number để chia layout vị trí vùng chiếm trên màn hình, ví dụ flex: 100 thì
+chia nhỏ từng phần ra cộng lại đủ 100
+- flex: 1 tức là chiếm toàn bộ màn hình 100%
+- ScrollView / FlatList : cuộn các item, FlatList tối ưu trong việc loading data hơn
+- Cuộn ngang trong FlatList : horizontal
+- Sử kiện onPress dùng cho state khi mình setState của nó => sau đó dùng state đã lưu ra dùng
+- Chia cột bằng GridView vs FlatList: numColumns={num}
+- Cài navigation: bị lỗi thì xóa thư mục node_modules sau đó yarn install lại là hết
+- Bundle JavaScript không được cập nhật:
+- Trong quá trình phát triển, bạn có thể đã thay đổi mã nguồn JavaScript của ứng dụng nhưng quên cập nhật bundle JavaScript.
+ Hãy chắc chắn bạn đã chạy lệnh cập nhật bundle trước khi xây dựng APK:
+npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
